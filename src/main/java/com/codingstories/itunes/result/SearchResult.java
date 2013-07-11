@@ -14,6 +14,7 @@ public class SearchResult {
     private String artistId;
     private String trackId;
     private String collectionId;
+    private String releaseDate;
 
     public String getWrapperType() {
         return wrapperType;
@@ -95,6 +96,14 @@ public class SearchResult {
         this.collectionId = collectionId;
     }
 
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -110,6 +119,7 @@ public class SearchResult {
             return false;
         if (explicitness != null ? !explicitness.equals(that.explicitness) : that.explicitness != null) return false;
         if (kind != null ? !kind.equals(that.kind) : that.kind != null) return false;
+        if (releaseDate != null ? !releaseDate.equals(that.releaseDate) : that.releaseDate != null) return false;
         if (trackId != null ? !trackId.equals(that.trackId) : that.trackId != null) return false;
         if (trackName != null ? !trackName.equals(that.trackName) : that.trackName != null) return false;
         if (wrapperType != null ? !wrapperType.equals(that.wrapperType) : that.wrapperType != null) return false;
@@ -129,6 +139,7 @@ public class SearchResult {
         result = 31 * result + (artistId != null ? artistId.hashCode() : 0);
         result = 31 * result + (trackId != null ? trackId.hashCode() : 0);
         result = 31 * result + (collectionId != null ? collectionId.hashCode() : 0);
+        result = 31 * result + (releaseDate != null ? releaseDate.hashCode() : 0);
         return result;
     }
 
@@ -145,6 +156,7 @@ public class SearchResult {
                 ", artistId='" + artistId + '\'' +
                 ", trackId='" + trackId + '\'' +
                 ", collectionId='" + collectionId + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
                 '}';
     }
 }

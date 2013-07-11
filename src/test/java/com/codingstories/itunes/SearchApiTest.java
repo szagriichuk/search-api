@@ -17,15 +17,25 @@ public class SearchApiTest {
 
     @Test
     public void testSearch() throws Exception {
-        SearchResults data = SearchApi.search(createParams());
+        SearchResults data = SearchApi.search(createParams("jack", "johnson"));
         logger.info(data.toString());
         Assert.assertNotNull(data);
     }
 
-    private SearchParameters createParams() {
+    @Test
+    public void testSearchAlbum() throws Exception {
+        SearchResults data = SearchApi.search(createParams("jack", "johnson", "Sing-a-Longs and Lullabies for the " +
+                "Film Curious George"));
+        logger.info(data.toString());
+        Assert.assertNotNull(data);
+        Assert.assertNotNull(data.getResults().get(0).getReleaseDate() != null);
+    }
+
+    private SearchParameters createParams(String... terms) {
         SearchParameters searchParams = new SearchParameters();
-        searchParams.addQueryTerm("jack");
-        searchParams.addQueryTerm("johnson");
+        for (String term : terms) {
+            searchParams.addQueryTerm(term);
+        }
         searchParams.setMedia(Media.MUSIC);
         searchParams.setLimit(new Limit(200));
         return searchParams;
